@@ -8,6 +8,8 @@ Simply prepend any arxiv.org link with 'talk2' to load the paper into a responsi
 ## Installation
 This server has been tested on Linux only so far (including Amazon (AWS) Linux 2 on EC2 and Ubuntu 22.04 LTS on a Azure VM).
 ```
+sudo usermod -aG docker $USER
+(relogin to load new group assigned to user)
 git clone https://github.com/evanhu1/talk2arxiv-server
 cd talk2arxiv-server/
 python3 -m pip install --user pipx

@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 pipx install poetry
 poetry install
-poetry run python -m spacy download en_core_web_sm
+poetry run python -m spacy download en
 poetry run gunicorn app:app -b 0.0.0.0:3001
 ```
 You must also create a .env with the following defined:

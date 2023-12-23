@@ -6,14 +6,20 @@
 Simply prepend any arxiv.org link with 'talk2' to load the paper into a responsive RAG chat application (e.g. www.arxiv.org/pdf/1706.03762.pdf -> www.talk2arxiv.org/pdf/1706.03762.pdf)
 
 ## Installation
-This server is intended to be run on a Linux (specifically Amazon Linux 2 on EC2)
+This server has been tested on Linux only so far (including Amazon (AWS) Linux 2 on EC2 and Ubuntu 22.04 LTS on a Azure VM).
 ```
-usermod -aG wheel root
 git clone https://github.com/evanhu1/talk2arxiv-server
 cd talk2arxiv-server/
 python3 -m pip install --user pipx
-echo export PATH=$PATH:/root/.local/bin >> ~/.bashrc
+echo export PATH=$PATH:${HOME}/.local/bin >> ~/.bashrc
 source ~/.bashrc
+sudo apt install python3.10-venv (if running on Ubuntu)
+
+(install dependencies:)
+pip install pip-tools
+python -m piptools compile -o requirements.txt pyproject.toml
+pip install -r requirements.txt 
+
 pipx install poetry
 poetry install
 poetry run python -m spacy download en_core_web_sm
@@ -34,7 +40,11 @@ OPENAI_API_KEY="
 - Contextual Relevance: Employs a reranking process to select the most relevant content based on user input.
 
 ## Technologies Used
-Poetry, Python, Flask, Gunicorn, and Nginx.
+* Poetry
+* Python (tested with 3.10.12)
+* Flask
+* Gunicorn
+* Nginx
 
 ## Credits
 - SciPDF

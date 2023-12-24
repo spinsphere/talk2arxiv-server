@@ -7,9 +7,18 @@ import docker
 
 client = docker.from_env()
 
-if len(client.containers.list()) == 0:
-  client.containers.run("lfoppiano/grobid:0.8.0", detach=True, ports={'8070/tcp': 8070})
-
+GROBID_IMAGE = "lfoppiano/grobid:0.8.0"
+grobid_running = False
+for container in client.containers.list():
+    if GROBID_IMAGE in str(container.image):
+        grobid_running = True
+        break
+if grobid_running:
+    print("Grobid already running", end="\n", flush=True)
+else:
+    print("Starting Grobid", end="\n", flush=True)
+    client.containers.run(GROBID_IMAGE, detach=True, ports={'8070/tcp': 8070})
+    
 app = Flask(__name__)
 CORS(app, origins=["https://*.spinsphere.xyz", "http://localhost:3000", "https://localhost:3000"])
 

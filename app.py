@@ -11,7 +11,7 @@ if len(client.containers.list()) == 0:
   client.containers.run("lfoppiano/grobid:0.8.0", detach=True, ports={'8070/tcp': 8070})
 
 app = Flask(__name__)
-CORS(app, origins=["https://www.talk2arxiv.org", "https://talk2arxiv.com", "http://localhost:3000", "https://localhost:3000"])
+CORS(app, origins=["https://*.spinsphere.xyz", "http://localhost:3000", "https://localhost:3000"])
 
 @app.route('/ping', methods=['GET'])
 def ping_route():

@@ -11,7 +11,7 @@ def generate_random_uuid():
 
 load_dotenv()
 PINECONE_API_KEY = getenv("PINECONE_API_KEY")
-PINECONE_ENDPOINT = "https://arxiv-euyze3g.svc.gcp-starter.pinecone.io"
+PINECONE_ENDPOINT = "https://q-2r2f23w.svc.gcp-starter.pinecone.io"
 
 pinecone.init(api_key=PINECONE_API_KEY, environment="gcp-starter")
 index = pinecone.Index("arxiv")

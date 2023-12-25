@@ -14,7 +14,7 @@ PINECONE_API_KEY = getenv("PINECONE_API_KEY")
 PINECONE_ENDPOINT = "https://q-2r2f23w.svc.gcp-starter.pinecone.io"
 
 pinecone.init(api_key=PINECONE_API_KEY, environment="gcp-starter")
-index = pinecone.Index("arxiv")
+index = pinecone.Index("q")
 
 def check_already_embedded(paper_id):
   retrieved_docs = index.query(
